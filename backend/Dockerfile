@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y libgl1 libglib2.0-0 \
     tesseract-ocr \
     libtesseract-dev \
     libleptonica-dev \
@@ -22,7 +22,7 @@ WORKDIR /app
 COPY . .
 
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r dependencies.txt
 
 EXPOSE 8000
 
